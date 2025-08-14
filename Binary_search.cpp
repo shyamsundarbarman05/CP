@@ -39,16 +39,15 @@ int main()
 
 
 
-// 📌 Algorithm Name: Linear Search Algorithm
+// 📌 Algorithm Name: Binary Search Algorithm
 
 // 📖 Definition:
-// Linear Search is a simple searching technique used to find the position of a specific element (key) in an array by checking each element one by one from start to end until the element is found or the array ends.
-
+// Binary Search finds an element in a sorted array by repeatedly dividing the search range in half until the element is found or not present.
 // 🔹 Input:
 
-// size → number of elements in the array
+// n → number of elements in the array (sorted)
 
-// n[] → array elements
+// a[] → sorted array elements
 
 // key → element to be searched
 
@@ -56,34 +55,16 @@ int main()
 
 // Index position of the key if found
 
-// Message “Element not found” if the key is not present
+// “Element not found” if the key is not present
 
-// 🛠 Steps:
+// 🛠 Algorithm (5 Steps):
 
-// Step 1: Start
+// Start with low = 0 and high = n - 1.
 
-// Step 2: Input size (number of elements in the array).
+// Find mid = (low + high) / 2.
 
-// Step 3: Declare an array n[size].
+// If a[mid] == key, return mid (found).
 
-// Step 4: Input the elements of the array.
+// If a[mid] < key, set low = mid + 1; else set high = mid - 1.
 
-// Step 5: Input key (element to search).
-
-// Step 6: Set i = 0.
-
-// Step 7: Repeat until i < size
-
-// If n[i] == key → Return index i (element found).
-
-// Else → Increment i.
-
-// Step 8: If end of array is reached without finding the key → Return -1 (element not found).
-
-// Step 9: Display result:
-
-// If index is not -1 → print position.
-
-// Else → print “Element not found.”
-
-// Step 10: Stop
+// Repeat steps 2–4 until low > high, then return -1 (not found).

@@ -1,34 +1,45 @@
-#include <iostream>
+ #include <iostream>
+#include <vector>
 using namespace std;
 
-void removeDuplicates(int a[], int &n) {
-    for (int i = 0; i < n; i++) {
-        for (int j = i + 1; j < n; ) {
-            if (a[i] == a[j]) {
-                // Shift elements left
-                for (int k = j; k < n - 1; k++) {
-                    a[k] = a[k + 1];
-                }
-                n--; // Reduce size
-            } else {
-                j++; // Only move to next if no deletion
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int n = nums.size();
+        if (n == 0) return 0;
+
+        int k = 0; // pointer to last unique element
+        for (int i = 1; i < n; i++) {
+            if (nums[i] != nums[k]) {
+                k++;
+                nums[k] = nums[i];
             }
         }
+        return k + 1; // new size of array without duplicates
     }
-}
+};
 
 int main() {
     int n;
-    cout << "Enter size: ";
+    cout << "Enter the size of the array: ";
     cin >> n;
-    int a[n];
-    cout << "Enter elements: ";
-    for (int i = 0; i < n; i++) cin >> a[i];
 
-    removeDuplicates(a, n);
+    vector<int> nums(n);
+    cout << "Enter the elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> nums[i];
+    }
+
+    Solution sol;
+    int newSize = sol.removeDuplicates(nums);
 
     cout << "Array after removing duplicates: ";
-    for (int i = 0; i < n; i++) cout << a[i] << " ";
+    for (int i = 0; i < newSize; i++) {
+        cout << nums[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
 }
 
 // 📌 Algorithm Name: Remove Duplicates from Array
